@@ -1,8 +1,9 @@
 name: Local prototype regression tests
 
+# Temporarily manual-only while GitHub Actions minutes are exhausted.
+# Local tests: python -m unittest discover -s tests -v
 on:
-  push:
-  pull_request:
+  workflow_dispatch:
 
 jobs:
   regression:
