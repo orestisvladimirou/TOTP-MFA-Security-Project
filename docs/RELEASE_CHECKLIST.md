@@ -20,10 +20,10 @@ This is a **private portfolio source snapshot** with reviewed Flask code and tem
 ## Technical review
 
 - [x] Record direct dependencies from imported modules; select supported version ranges (versions still need environment validation).
-- [x] Document expected local setup and execution commands (not yet runtime validated).
-- [ ] Run the project in a clean virtual environment and verify basic flows.
+- [x] Document local setup and test execution commands; dependencies were installed and tests executed successfully on the owner's Windows PC.
+- [ ] Open the application in a browser and manually verify registration, TOTP enrolment and login; regression tests already passed in a local virtual environment.
 - [ ] Reproduce the original eight manual checks; record any differences from the report.
-- [x] Add a separate automated regression suite; **execution remains pending**, and tests are not original TM470 work.
+- [x] Add and locally run the separate regression suite: **8/8 passed on Windows / Python 3.13.5 on 30 October 2026** (3.360 seconds; owner-provided terminal output). These are not the original TM470 manual tests.
 - [x] Clearly disclose educational/non-production limitations.
 
 ## Portfolio polish
