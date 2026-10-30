@@ -52,6 +52,8 @@ A new `unittest` regression suite and GitHub Actions workflow accompany this por
 python -m unittest discover -s tests -v
 ```
 
+**Local regression verification (30 October 2026):** all **8/8** tests passed on Windows with Python **3.13.5**, in **3.360 seconds**, with zero failures or errors. This result was observed from the user's PowerShell output, not from GitHub Actions. GitHub Actions is temporarily configured for manual triggering only because available Actions usage is exhausted.
+
 The original assessment findings are documented in [Evaluation](docs/EVALUATION.md). The regression suite uses its own temporary SQLite database rather than the original test database.
 
 ## Security limitations
