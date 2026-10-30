@@ -20,12 +20,12 @@ The user provided `mfa_project.zip` containing two identical copies of the Flask
 
 ## Verification status
 
-Python source syntax compiled successfully during preparation. Direct runtime validation of Flask, bcrypt and PyOTP integration was **not possible in the preparation environment** because these dependencies were absent and package installation could not reach the package index. An independent regression suite is provided but its outcomes **must not be claimed as passing until run** in an environment with the dependencies installed. The original report documents **8/8 manual checks passed**, which remains separate from this package's verification status.
+Python source syntax compiled successfully during preparation, although direct runtime validation in the preparation environment was unavailable due to missing dependencies. On **30 October 2026**, the owner ran the independent portfolio regression suite locally on **Windows / Python 3.13.5** and provided the terminal result: **8 tests run in 3.360 seconds — OK (zero failures/errors)**. This provides evidence that the tested application behaviors work in that environment, but is not an independent security audit or a complete manual browser review. GitHub Actions has not provided a successful CI result due to exhausted Actions usage; automatic workflow triggers are temporarily disabled. The original capstone report separately documents **8/8 historical manual checks passed**. Do not combine these two sets of results.
 
 ## Required before public release
 
 - Confirm The Open University's rules for public sharing of assessed code, especially while final results are pending.
-- Run application and regression suite in a clean local virtual environment; record actual results.
+- Manually run the application in a browser and validate enrolment and login flow; local regression suite has already passed (8/8, 30 October 2026).
 - Perform full secret scan on the proposed Git history as well as the working files.
 - Review dependency versions and known vulnerabilities.
 - Do not expose this educational app on the public internet.
