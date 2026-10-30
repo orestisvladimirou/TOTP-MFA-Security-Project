@@ -4,6 +4,7 @@ import sqlite3
 import tempfile
 import time
 import unittest
+from contextlib import closing
 from pathlib import Path
 
 import bcrypt
@@ -35,7 +36,7 @@ class AuthenticationTests(unittest.TestCase):
         return self.client.post("/login", data={"username": USERNAME, "password": password})
 
     def get_secret(self):
-        with sqlite3.connect(prototype.DATABASE) as conn:
+        with closing(sqlite3.connect(prototype.DATABASE)) as conn:
             row = conn.execute("SELECT totp_secret FROM users WHERE username = ?", (USERNAME,)).fetchone()
         return row[0] if row else None
 
@@ -53,7 +54,7 @@ class AuthenticationTests(unittest.TestCase):
 
     def test_03_bcrypt_hash_stored_not_plaintext(self):
         self.register()
-        with sqlite3.connect(prototype.DATABASE) as conn:
+        with closing(sqlite3.connect(prototype.DATABASE)) as conn:
             stored = conn.execute("SELECT password_hash FROM users WHERE username = ?", (USERNAME,)).fetchone()[0]
         self.assertNotEqual(stored, PASSWORD.encode())
         self.assertTrue(bcrypt.checkpw(PASSWORD.encode(), stored))
@@ -80,7 +81,7 @@ class AuthenticationTests(unittest.TestCase):
         self.register()
         for _ in range(5):
             self.login("incorrect-password")
-        with sqlite3.connect(prototype.DATABASE) as conn:
+        with closing(sqlite3.connect(prototype.DATABASE)) as conn:
             failures, until = conn.execute("SELECT failed_attempts, lockout_until FROM users WHERE username = ?", (USERNAME,)).fetchone()
         self.assertEqual(failures, 5)
         self.assertGreater(until, int(time.time()))
@@ -102,7 +103,7 @@ class AuthenticationTests(unittest.TestCase):
         self.login()
         code = pyotp.TOTP(self.get_secret()).now()
         self.client.post("/verify-mfa", data={"code": code})
-        with sqlite3.connect(prototype.DATABASE) as conn:
+        with closing(sqlite3.connect(prototype.DATABASE)) as conn:
             rows = conn.execute("SELECT username, event, timestamp FROM auth_logs").fetchall()
         self.assertTrue(any(event == "user_registered" for _, event, _ in rows))
         self.assertTrue(any(event == "failed_password_attempt" for _, event, _ in rows))
