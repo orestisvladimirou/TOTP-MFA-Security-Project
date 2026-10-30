@@ -22,6 +22,10 @@ The user provided `mfa_project.zip` containing two identical copies of the Flask
 
 Python source syntax compiled successfully during preparation, although direct runtime validation in the preparation environment was unavailable due to missing dependencies. On **30 October 2026**, the owner ran the independent portfolio regression suite locally on **Windows / Python 3.13.5** and provided the terminal result: **8 tests run in 3.360 seconds — OK (zero failures/errors)**. This provides evidence that the tested application behaviors work in that environment, but is not an independent security audit or a complete manual browser review. GitHub Actions has not provided a successful CI result due to exhausted Actions usage; automatic workflow triggers are temporarily disabled. The original capstone report separately documents **8/8 historical manual checks passed**. Do not combine these two sets of results.
 
+## Local browser verification (30 October 2026)
+
+The owner reported successfully logging into the application locally after the 8/8 automated regression checks passed. This is a user-reported manual smoke test, not an independently reviewed security audit. Public release remains blocked pending academic-sharing review, full secret-history review and any additional production-oriented security work.
+
 ## Required before public release
 
 - Confirm The Open University's rules for public sharing of assessed code, especially while final results are pending.
