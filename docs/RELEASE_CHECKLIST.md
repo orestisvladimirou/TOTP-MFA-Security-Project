@@ -21,7 +21,7 @@ This is a **private portfolio source snapshot** with reviewed Flask code and tem
 
 - [x] Record direct dependencies from imported modules; select supported version ranges (versions still need environment validation).
 - [x] Document local setup and test execution commands; dependencies were installed and tests executed successfully on the owner's Windows PC.
-- [ ] Open the application in a browser and manually verify registration, TOTP enrolment and login; regression tests already passed in a local virtual environment.
+- [x] User confirmed successful local browser login on 30 October 2026 after running the Flask application; the full authentication sequence was user-reported, not independently observed. Regression tests passed 8/8 in a local virtual environment.
 - [ ] Reproduce the original eight manual checks; record any differences from the report.
 - [x] Add and locally run the separate regression suite: **8/8 passed on Windows / Python 3.13.5 on 30 October 2026** (3.360 seconds; owner-provided terminal output). These are not the original TM470 manual tests.
 - [x] Clearly disclose educational/non-production limitations.
