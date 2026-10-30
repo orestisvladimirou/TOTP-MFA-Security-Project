@@ -1,25 +1,54 @@
 # Python
 __pycache__/
 *.py[cod]
+*.pyo
 .pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+
+# Virtual environments, editor and operating-system files
 .venv/
 venv/
-# Local authentication data and secrets
+env/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Private configuration and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*secret*
+*credential*
+
+# SQLite databases, transaction journals and logs
 *.db
 *.db-*
 *.sqlite
 *.sqlite3
-.env
-.env.*
-!.env.example
-*.key
-*.pem
-*.p12
-*.pfx
+*.sqlite-*
+*.sqlite3-*
 *.log
-# Academic submissions, unreviewed evidence and archives
-*.pdf
-*.docx
-*.zip
-raw-screenshots/
+logs/
+instance/
+
+# Avoid committing original assessment submissions and unreviewed evidence
+*TM470*EMA*.pdf
+*TM470*EMA*.docx
 private-evidence/
+raw-screenshots/
+
+# Academic submissions and archives
+*.docx
+*.pdf
+*.zip
+*.7z
+*.rar
